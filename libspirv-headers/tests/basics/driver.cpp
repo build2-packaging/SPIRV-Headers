@@ -1,34 +1,17 @@
-#include <sstream>
-#include <stdexcept>
-
-#include <spirv/spirv-headers.hpp>
+#include <spirv/unified1/GLSL.std.450.h>
+#include <spirv/unified1/OpenCL.std.h>
+#include <spirv/unified1/spirv.hpp>
 
 #undef NDEBUG
 #include <cassert>
 
 int main ()
 {
-  using namespace std;
-  using namespace spirv_headers;
+  const GLSLstd450 k_sin = GLSLstd450Sin;
+  const OpenCLLIB::Entrypoints k_native_cos = OpenCLLIB::Native_cos;
+  const spv::Op k_nop = spv::OpNop;
 
-  // Basics.
-  //
-  {
-    ostringstream o;
-    say_hello (o, "World");
-    assert (o.str () == "Hello, World!\n");
-  }
-
-  // Empty name.
-  //
-  try
-  {
-    ostringstream o;
-    say_hello (o, "");
-    assert (false);
-  }
-  catch (const invalid_argument& e)
-  {
-    assert (e.what () == string ("empty name"));
-  }
+  assert (k_sin == GLSLstd450Sin);
+  assert (k_native_cos == OpenCLLIB::Native_cos);
+  assert (k_nop == spv::OpNop);
 }
