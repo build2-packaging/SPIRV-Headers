@@ -1,17 +1,20 @@
 : 1
 name: libspirv-headers
-version: 0.1.0-a.0.z
+version: 1.4.357-a.0.z
+upstream-version: vulkan-sdk-1.4.357.0
 type: lib,binless
 language: c++
 language: c
-project: build2-SPIRV-Headers
-summary: spirv-headers C++ library
-license: other: proprietary ; Not free/open source.
+project: spirv-headers
+summary: Machine-readable headers for the SPIR-V registry
+topics: graphics, spir-v, headers, vulkan
+license: MIT ; MIT License.
 description-file: README.md
 package-description-file: PACKAGE-README.md
-url: https://example.org/upstream
-email: upstream@example.org
-package-url: https://github.com/build2-packaging/build2-SPIRV-Headers
+url: https://github.com/KhronosGroup/SPIRV-Headers
+doc-url: https://www.khronos.org/registry/spir-v/
+src-url: https://github.com/KhronosGroup/SPIRV-Headers
+package-url: https://github.com/build2-packaging/SPIRV-Headers
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
