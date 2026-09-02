@@ -1,6 +1,9 @@
 # Test executables.
 #
 driver
+example
+example-cpp
+example11
 
 # Testscript output directories (can be symlinks).
 #

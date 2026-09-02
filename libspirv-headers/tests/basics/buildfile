@@ -1,3 +1,12 @@
 import libs = libspirv-headers%lib{spirv-headers}
 
-exe{driver}: {hxx ixx txx h cxx c}{**} $libs testscript{**}
+# Upstream compile-checks of the C, C++, and C++11 headers.
+#
+./: exe{example}:     c{example}       $libs
+./: exe{example-cpp}: cxx{example-cpp} $libs
+./: exe{example11}:   cxx{example11}   $libs
+
+# Matches upstream tests/CMakeLists.txt.
+#
+c.poptions += -DSPV_ENABLE_UTILITY_CODE
+cxx.poptions += -DSPV_ENABLE_UTILITY_CODE
