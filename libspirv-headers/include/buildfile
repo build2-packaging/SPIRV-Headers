@@ -1,7 +1,37 @@
 intf_libs = # Interface dependencies.
 #import xxxx_libs += libhello%lib{hello}
 
-lib{spirv-headers}: {hxx ixx txx h}{**} $intf_libs
+# C++11 enum-class headers use the non-standard .hpp11 extension.
+#
+define hpp11: hxx
+hpp11{*}: extension = hpp11
+
+# Machine-readable files shipped next to the headers (same set as upstream
+# CMake install(DIRECTORY include/spirv)). json{} is a core type.
+#
+define xml: file
+xml{*}: extension = xml
+
+define lua: file
+lua{*}: extension = lua
+
+define py: file
+py{*}: extension = py
+
+define cs: file
+cs{*}: extension = cs
+
+define d: file
+d{*}: extension = d
+
+define bf: file
+bf{*}: extension = bf
+
+lib{spirv-headers}: {hxx ixx txx h hpp11}{**} $intf_libs
+
+# Grammar, registry, and non-C/C++ language bindings.
+#
+lib{spirv-headers}: {json xml lua py cs d bf}{**}: include = adhoc
 
 # Export options.
 #
@@ -16,7 +46,7 @@ lib{spirv-headers}:
 
 # Install recreating subdirectories.
 #
-{hxx ixx txx h}{*}:
+{hxx ixx txx h hpp11 json xml lua py cs d bf}{*}:
 {
   install         = include/
   install.subdirs = true
