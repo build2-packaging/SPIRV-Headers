@@ -1,6 +1,6 @@
 : 1
 name: libspirv-headers
-version: 1.4.357-a.0.z
+version: 1.4.357
 upstream-version: vulkan-sdk-1.4.357.0
 type: lib,binless
 language: c++
