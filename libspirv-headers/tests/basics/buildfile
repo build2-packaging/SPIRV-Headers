@@ -10,3 +10,10 @@ import libs = libspirv-headers%lib{spirv-headers}
 #
 c.poptions += -DSPV_ENABLE_UTILITY_CODE
 cxx.poptions += -DSPV_ENABLE_UTILITY_CODE
+
+# example-cpp.cpp and example11.cpp declare their compile-check constants in
+# an anonymous namespace purely to exercise the headers, so they are
+# intentionally unused. Silence the resulting -Wunused-const-variable noise;
+# excluded on MSVC, which doesn't understand this flag spelling.
+if ($cxx.class != 'msvc')
+  cxx.coptions += -Wno-unused-const-variable
