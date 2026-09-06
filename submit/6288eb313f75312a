@@ -1,0 +1,10 @@
+: 1
+name: libspirv-headers
+version: 1.4.357
+upstream-version: vulkan-sdk-1.4.357.0
+type: lib,binless
+language: c++
+language: c
+project: spirv-headers
+summary: Machine-readable headers for the SPIR-V registry
+license: MIT; MIT License.
